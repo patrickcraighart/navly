@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navly - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #334155;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.05));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-1 { 
+            width: 200px; height: 200px; 
+            top: 10%; left: 10%; 
+            animation-delay: 0s; 
+        }
+        
+        .element-2 { 
+            width: 150px; height: 150px; 
+            top: 60%; right: 15%; 
+            animation-delay: 2s; 
+        }
+        
+        .element-3 { 
+            width: 100px; height: 100px; 
+            bottom: 20%; left: 20%; 
+            animation-delay: 4s; 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .main-content {
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .coming-soon {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .description {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
+
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            margin-right: 12px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); 
+            }
+            50% { 
+                transform: scale(1.1); 
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); 
+            }
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 3rem;
+            animation: slideUp 0.8s ease-out 0.8s both;
+        }
+
+        .contact-section {
+            animation: slideUp 0.8s ease-out 1s both;
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .email-link:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .email-link:hover::before {
+            left: 100%;
+        }
+
+        .email-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #94a3b8;
+            font-size: 0.875rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 3rem 2rem;
+                margin: 1rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .coming-soon {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Subtle hover effects */
+        .main-content:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+        </div>
+
+        <main class="main-content">
+            <h1 class="logo">Navly</h1>
+            
+            <p class="tagline">Healthcare, reimagined</p>
+            
+            <h2 class="coming-soon">Coming Soon</h2>
+            
+            <p class="description">
+                We're building something extraordinary to transform your healthcare experience.
+            </p>
+            
+            <div class="status">
+                <span class="pulse-dot"></span>
+                In Development
+            </div>
+            
+            <div class="contact-section">
+                <p class="contact-text">Have questions or want to learn more?</p>
+                <a href="mailto:hello@navly.health" class="email-link">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect width="20" height="16" x="2" y="4" rx="2"/>
+                        <path d="m22 7-10 5L2 7"/>
+                    </svg>
+                    hello@navly.health
+                </a>
+            </div>
+        </main>
+        
+        <div class="footer">
+            © 2025 Navly. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
